@@ -1,22 +1,40 @@
 <template>
  <v-app>
-   <v-card>
-     <v-card-title>
+   <v-card align="center" color="purple lighten-4">
+       <v-icon size="100" color="red darken-3">favorite</v-icon>
        <h1>Login</h1>
-     </v-card-title>
      <v-card-text>
        <v-form>
-         <v-text-field  prepend-icon="mdi-account-circle" label="Username" />
-         <v-text-field prepend-icon="https" append-icon="visibility_off" label="Password" />
+         <v-text-field  
+           prepend-icon="mdi-account-circle" 
+           label="Username" 
+         />
+         <v-text-field 
+            :type="showPassword ? 'text' : 'password'" 
+            label="Password"
+            prepend-icon="mdi-lock"
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            @click:append="showPassword = !showPassword"
+          />
        </v-form>
          <v-card-actions>
         <nuxt-link to="/register"> 
-        <v-btn large color="success">REGISTER</v-btn>
+        <v-btn large color="purple">REGISTER</v-btn>
         </nuxt-link>
          <v-spacer></v-spacer>
-        <v-btn large color="primary">LOGIN</v-btn>
+        <v-btn large color="pink">LOGIN</v-btn>
         </v-card-actions>
      </v-card-text>
    </v-card>
  </v-app>
 </template>
+<script>
+export default {
+  name: 'App',
+  data () {
+    return {
+      showPassword: false
+    }
+  }
+}
+</script>
